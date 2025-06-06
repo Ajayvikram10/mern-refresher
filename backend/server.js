@@ -32,6 +32,10 @@ app.post("/api/products", async (req,res) => {
     }
 });
 
+app.update("/api/products/:id", (req,res) => {
+    
+} );
+
 
 console.log(process.env.MONGO_URI);
 

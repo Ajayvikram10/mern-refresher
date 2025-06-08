@@ -3,8 +3,12 @@ import mongoose from "mongoose";
 
 export const getProducts = async (req,res) => {
 
+    const sortBy = req.query.sortBy || "price";
+    const order = req.query.order === "desc" ? -1 : 1;
+
     try{
-        const products = await Product.find({});
+        // const products = await Product.find({});
+        const products = await Product.find().sort({[sortBy]: order});
         res.status(200).json({success: true, data: products});
 
     }catch (error) {
@@ -94,3 +98,17 @@ export const getProductCount = async (req, res) => {
         res.status(500).json({success: false, message: "Server Error"});
     }
 }
+
+//  export const sortProductByPrice = async (req, res) => {
+    
+
+//     try {
+//         const sortBy = req.query.sortBy || "price"; ///default sort by price
+//         const order = req.query.order === "desc" ? -1 : 1; //default ascending
+
+//         const products = await Product.find().sort({[sortBy]: order});
+//         res.status(200).json({success: true, data: products});
+//     } catch (error) {
+//         res.status(500).json({success: false, message: "Server Error"});
+//     }
+//  }

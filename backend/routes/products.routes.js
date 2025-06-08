@@ -21,6 +21,8 @@ router.get("/:id", getProductById);
 
 router.put("/:id", updateProducts);
 
+// router.get("?sortBy=price&order=asc", sortProductByPrice);
+
 
 
 export default router;
